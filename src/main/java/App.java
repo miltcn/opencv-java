@@ -2,9 +2,10 @@ import io.github.cdimascio.dotenv.Dotenv;
 import nu.pattern.OpenCV;
 import org.apache.log4j.helpers.LogLog;
 import org.opencv.core.Mat;
+import org.opencv.core.Point;
+import org.opencv.core.Scalar;
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 public class App {
     static {
@@ -14,19 +15,22 @@ public class App {
     public static void main(String[] args) {
 
         try {
+
             Dotenv dotenv = Dotenv.load();
             String pathSource = dotenv.get("BASE_PATH") + "\\lena.png";
             String pathOut = dotenv.get("BASE_PATH") + "\\outputs\\lena_out.png";
 
             Mat image = DIP.readImage(pathSource);
-            image = DIP.toGaysScale(image);
-            image = DIP.applyThreshold(image, 127,255);
+//            image = DIP.toGaysScale(image);
+//            image = DIP.applyThreshold(image, 127,255);
             DIP.writeImage(pathOut, image);
+
+            DIP.drawRectangle(image, new Point(200,200), new Point(400,400), new Scalar(0,0,255),2);
 
             BufferedImage bufferedImage = DIP.toBufferedImage(image);
             DIP.showImage(bufferedImage);
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

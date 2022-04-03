@@ -1,5 +1,7 @@
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
+import org.opencv.core.Point;
+import org.opencv.core.Scalar;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
@@ -63,5 +65,9 @@ public class DIP {
         Mat dst = new Mat();
         Imgproc.threshold(src, dst, thresh, maxval, Imgproc.THRESH_BINARY);
         return dst;
+    }
+
+    public static void drawRectangle(Mat image, Point pt1, Point pt2, Scalar bgr, int thickness) {
+        Imgproc.rectangle(image, pt1, pt2, bgr, thickness);
     }
 }
