@@ -12,6 +12,7 @@ public class App {
         String pathOut = "C:\\opencv_assets\\outputs\\lena_out.png";
 
         Mat image = DIP.readImage(pathSource);
+        image = DIP.toGaysScale(image);
         DIP.writeImage(pathOut, image);
     }
 
