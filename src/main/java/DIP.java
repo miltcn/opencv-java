@@ -70,4 +70,10 @@ public class DIP {
     public static void drawRectangle(Mat image, Point pt1, Point pt2, Scalar bgr, int thickness) {
         Imgproc.rectangle(image, pt1, pt2, bgr, thickness);
     }
+
+    public static Mat applyCanny(Mat image, Double thresholdLow, Double thresholdHigh, int apertureSize, boolean L2gradient) {
+        Mat imageOut = new Mat();
+        Imgproc.Canny(image,imageOut, thresholdLow, thresholdHigh, apertureSize, L2gradient);
+        return imageOut;
+    }
 }
