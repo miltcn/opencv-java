@@ -1,3 +1,4 @@
+import io.github.cdimascio.dotenv.Dotenv;
 import nu.pattern.OpenCV;
 import org.apache.log4j.helpers.LogLog;
 import org.opencv.core.Mat;
@@ -13,8 +14,9 @@ public class App {
     public static void main(String[] args) {
 
         try {
-            String pathSource = "C:\\opencv_assets\\lena.png";
-            String pathOut = "C:\\opencv_assets\\outputs\\lena_out.png";
+            Dotenv dotenv = Dotenv.load();
+            String pathSource = dotenv.get("BASE_PATH") + "\\lena.png";
+            String pathOut = dotenv.get("BASE_PATH") + "\\outputs\\lena_out.png";
 
             Mat image = DIP.readImage(pathSource);
             image = DIP.toGaysScale(image);
@@ -27,7 +29,6 @@ public class App {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public static void load_opencv_library() {
