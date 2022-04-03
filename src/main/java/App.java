@@ -1,5 +1,6 @@
 import nu.pattern.OpenCV;
 import org.apache.log4j.helpers.LogLog;
+import org.opencv.core.Mat;
 
 public class App {
     static {
@@ -7,8 +8,11 @@ public class App {
     }
 
     public static void main(String[] args) {
+        String pathSource = "C:\\opencv_assets\\lena.png";
+        String pathOut = "C:\\opencv_assets\\outputs\\lena_out.png";
 
-
+        Mat image = DIP.readImage(pathSource);
+        DIP.writeImage(pathOut, image);
     }
 
     public static void load_opencv_library() {
