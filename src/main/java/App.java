@@ -18,6 +18,7 @@ public class App {
 
             Mat image = DIP.readImage(pathSource);
             image = DIP.toGaysScale(image);
+            image = DIP.applyThreshold(image, 127,255);
             DIP.writeImage(pathOut, image);
 
             BufferedImage bufferedImage = DIP.toBufferedImage(image);

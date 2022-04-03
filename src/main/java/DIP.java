@@ -58,4 +58,10 @@ public class DIP {
         frame.pack();
         frame.setVisible(true);
     }
+
+    public static Mat applyThreshold(Mat src, double thresh, double maxval) {
+        Mat dst = new Mat();
+        Imgproc.threshold(src, dst, thresh, maxval, Imgproc.THRESH_BINARY);
+        return dst;
+    }
 }
